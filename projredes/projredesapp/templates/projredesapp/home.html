@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traceroute</title>
+</head>
+<body>
+    <h1>Traceroute</h1>
+    <form method="POST" action="{% url 'projredesapp:traceroute' %}">
+        {% csrf_token %}
+        <label for="ip_address">Endereço IP:</label>
+        <input type="text" id="ip_address" name="ip_address" required>
+        <br>
+        <br>
+        <label for="ttl">Número de saltos (TTL):</label>
+        <input type="number" id="ttl" name="ttl" min="1" max="255" required>
+        <br>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
