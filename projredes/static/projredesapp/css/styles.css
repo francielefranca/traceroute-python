@@ -1,0 +1,10 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse; /* CSS2 */
+    background: #FFFFF0;
+}
+
+.rtt {
+    width: 100px;
+    text-align: center;
+}

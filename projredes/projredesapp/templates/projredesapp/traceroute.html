@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado do Traceroute</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'projredesapp/css/styles.css' %}">
+</head>
+<body>
+    <h1>Resultado do Traceroute:</h1>
+    <div style="display: flex;">
+      <table style="width: 40%; margin-left: auto; margin-right: auto;">
+        <h2>Tabela do Traceroute</h2>
+        <caption>Tabela TTL - Ip</caption>
+        <thead>
+          <tr>
+            <th>TTL </th>
+            <th class="rtt">RTT's</th>
+            <th>Ip Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in tdata %}
+          <tr>
+            <td class="rtt">{{ row.hops }}</td>
+            <td class="rtt">{{ row.sched }} ms </td>
+            <td class="rtt">{{ row.addr }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2 style="text-align: center;">Gráfico do Traceroute</h2>
+      <img src="{% static 'C:/Users/franc/OneDrive/Área de Trabalho/projrede/projredes/static/projredesapp/images/graph.png' %}" alt="Grafico do Traceroute - RTTs e Hops" style="width: 50%; height: auto; margin-left: 50px;">
+    </div>
+      <br>
+      <br>
+      <h2>Dados estatísticos do RTT</h2>
+      <p clas="rtt"><strong>Menor RTT: </strong>{{ menor_rtt }} ms </p>
+      <p clas="rtt"><strong>Maior RTT: </strong>{{ maior_rtt }} ms </p>
+      <p clas="rtt"><strong>Media RTT: </strong>{{ media_rtt }} ms </p>
+      <br>
+      <br>
+</body>
+</html>
