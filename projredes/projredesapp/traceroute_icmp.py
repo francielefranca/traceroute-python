@@ -76,6 +76,16 @@ def receive_icmp_response(icmp_socket, send_time):
 def traceroute_icmp(destination, max_hops=30, timeout=2):
     port = 33434  # Porta padrão usada pelo traceroute
 
+    # Limpar listas antes de cada execução
+    rtt_array.clear()
+    num_hops.clear()
+    ip_addresses.clear()
+
+    # Excluir imagem anterior
+    graph_path = "C:/Users/franc/OneDrive/Área de Trabalho/projrede/projredes/static/projredesapp/images/graph.png"
+    if os.path.exists(graph_path):
+        os.remove(graph_path)
+
     for ttl in range(1, max_hops + 1):
         # Enviar pacote ICMP com o TTL atual
         icmp_socket, send_time = send_icmp_packet(destination, ttl)
